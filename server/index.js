@@ -10,7 +10,7 @@ const port = config.port;
 const hostname = config.hostname;
 
 app.use(bodyParser.json())
-app.use(morgan('dev'))
+app.use(morgan('dev')) 
 
 app.listen(port, hostname, ()=> {
     console.log(`Server listening at ${hostname}:${port}`)
