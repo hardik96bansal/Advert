@@ -12,7 +12,7 @@ const hostname = config.hostname;
 const mongoDbUrl = config.mongoDbUrl
 
 app.use(bodyParser.json())
-app.use(morgan('dev'))
+app.use(morgan('dev')) 
 
 mongoose.connect(mongoDbUrl)
 UserRouter.routerConfig(app)
