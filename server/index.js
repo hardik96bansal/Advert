@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 
 const config = require('./common/config/env.config.js')
 const UserRouter = require('./router/users.router')
+const AuthRouter = require('./router/auth.router')
 
 const app = express()
 const port = config.port;
@@ -16,6 +17,7 @@ app.use(morgan('dev'))
 
 mongoose.connect(mongoDbUrl)
 UserRouter.routerConfig(app)
+AuthRouter.routerConfig(app)
 
 app.listen(port, hostname, ()=> {
     console.log(`Server listening at ${hostname}:${port}`)
