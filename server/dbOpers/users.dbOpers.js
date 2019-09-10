@@ -14,6 +14,10 @@ exports.findById = (id) => {
         })
 }
 
+exports.findByEmail = (email) => {
+    return User.find({email : email});
+}
+
 exports.patchUser = (id,userData) => {
     return new Promise((resolve, reject) => {
         User.findById(id, (err, user) => {
