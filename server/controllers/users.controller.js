@@ -1,14 +1,16 @@
 const crypto = require('crypto')
 const UserDbOpers = require('../dbOpers/users.dbOpers')
 
-exports.insert = (req, res) => {
+exports.insert = (req, res, next) => {
     let salt = crypto.randomBytes(16).toString('base64');
     let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest('base64');
     req.body.password = salt + '$' + hash;
 
     UserDbOpers.createUser(req.body)
         .then((result) => {
-            res.status(201).send({ res: result._id });
+            //res.status(201).send({ res: result._id });
+            req.body.id = result._id
+            next()
         })
         .catch((err) => {
             console.log('aaa',err)

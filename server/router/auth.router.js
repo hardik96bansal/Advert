@@ -1,7 +1,9 @@
-const VerifyUserMiddleware = require('../authorisation/verify.user.middleware');
+const AuthController = require('../authorization/auth.controller');
 
 exports.routerConfig = (app) => {
     app.post('/auth', [
-        VerifyUserMiddleware.validateUserPassword
+        AuthController.validateUserPassword,
+        AuthController.login
     ]);
+    app.get('/abc',AuthController.validateJWT)
 }
