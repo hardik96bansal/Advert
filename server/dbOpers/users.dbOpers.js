@@ -31,8 +31,6 @@ exports.patchUser = (id,userData) => {
                 if(err) reject(err)
                 resolve(updateUser)
             })
-
-
         })
 
     })
